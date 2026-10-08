@@ -40,7 +40,7 @@ retain its state row; history / logbook appear if configured and supported.
 
 ```yaml
 type: custom:more-info-card
-entity: light.kitchen_lighting_light
+entity: light.kitchen_lights
 title: false
 show_attributes: false
 show_state_header: false
@@ -54,14 +54,17 @@ Confirm the configured sections disappear, all remaining controls remain
 reachable by scrolling, and a second normal card is unaffected. Toggle these
 options back on in the editor. Test desktop and iOS at different widths.
 
-## Actual card-mod reproduction still needed (#24)
+## Card-mod and the legacy state row (#24)
 
-Use the original reporter's configuration, with a real card-mod installation:
+The original report targets `state-card-content` on a light with the default
+configuration. The card no longer renders that legacy row for lights unless
+`show_state: true`, and the automated regression test checks that the reported
+selector has no target by default. With real card-mod, verify both the original
+configuration and, if you use it, the explicit override:
 
 ```yaml
 type: custom:more-info-card
 entity: light.kitchen_lighting_light
-show_state: true
 card_mod:
   style:
     state-card-content:
@@ -69,6 +72,6 @@ card_mod:
 
 Save, reopen the editor, reload, and trigger repeated entity state updates.
 Inspect the number of `state-card-content` nodes and browser memory. Neither
-should grow indefinitely. Repeat with the modern default (`show_state` omitted).
-The automated DOM-mutation test is not sufficient to mark #24 fixed. If this
-still reproduces, record the HA and card-mod versions and the browser console.
+should grow indefinitely. Repeat with `show_state: true` and confirm the target
+row is absent with the original default config. If duplication still reproduces
+with `show_state: true`, record the HA and card-mod versions and the browser console.
