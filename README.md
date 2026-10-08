@@ -63,7 +63,7 @@ Opening a view itself does not send a cleaning command.
 | [#19](https://github.com/thomasloven/lovelace-more-info-card/issues/19), [#21](https://github.com/thomasloven/lovelace-more-info-card/issues/21) | Omitted and disabled titles no longer generate a card header. |
 | [#22](https://github.com/thomasloven/lovelace-more-info-card/issues/22), [#30](https://github.com/thomasloven/lovelace-more-info-card/issues/30) | Add local name, state-header, attributes and light-effects visibility options. |
 | [#32](https://github.com/thomasloven/lovelace-more-info-card/issues/32) | Add width, height and maximum-height options with scrolling; content sections can be hidden. Native controls are not proportionally scaled. |
-| [#24](https://github.com/thomasloven/lovelace-more-info-card/issues/24) | Related stability coverage only: 100 HA updates plus card-mod-like DOM mutations keep one row and one card. Actual card-mod reproduction / validation is still required; this issue is not claimed fixed. |
+| [#24](https://github.com/thomasloven/lovelace-more-info-card/issues/24) | The reported default light-card config no longer renders `state-card-content`, so card-mod's reproducing selector has no target. A regression test covers that config. Setting `show_state: true` restores the row; verify that opt-in with real card-mod if you use it. |
 
 All 12 open issues were reviewed on 2026-10-08, including their comments.
 Several have community workarounds; an open issue is not necessarily unanswered.
@@ -88,7 +88,7 @@ title and dimension handling, favorites metadata, child-view data, scoped
 visibility, history / logbook and repeated DOM updates.
 
 The fixtures do not validate actual Roborock cleaning, climate services,
-HA rendering, card-mod, Browser Mod or iOS. See [the manual checks](tests/MANUAL.md).
+HA rendering, card-mod with `show_state: true`, Browser Mod or iOS. See [the manual checks](tests/MANUAL.md).
 
 ## Example
 ```
