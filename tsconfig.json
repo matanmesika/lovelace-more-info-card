@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
+    "types": [],
     "target": "es2017",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true
-  }
+  },
+  "include": ["src/**/*.ts"]
 }
+
