@@ -90,6 +90,11 @@ await test('modern light and climate controls omit duplicate state rows', async 
     assert.equal(card.shadowRoot.querySelectorAll('state-card-content').length, 0);
   }
 });
+await test('#24 reproduction: card-mod selector has no default light state row to target', async () => {
+  const card = await make({ card_mod: { style: { 'state-card-content': '' } } });
+  assert.ok(light(card));
+  assert.equal(card.shadowRoot.querySelectorAll('state-card-content').length, 0);
+});
 await test('legacy sensors keep their state row with in-dialog layout', async () => {
   const card = await make({ entity: 'sensor.test' });
   assert.ok(card.shadowRoot.querySelector('state-card-content').hasAttribute('in-dialog'));
