@@ -1,10 +1,10 @@
 {
   "name": "more-info-card",
   "private": true,
-  "version": "1.2.1-area-fix",
+  "version": "1.2.1-compat-fix",
   "description": "",
   "scripts": {
-    "test": "node tests/navigation.test.mjs",
+    "test": "node tests/navigation.test.mjs && node tests/compatibility.test.mjs",
     "typecheck": "tsc --noEmit",
     "build": "rollup -c",
     "watch": "rollup -c --watch"
@@ -27,3 +27,4 @@
     "tslib": "^2.1.0"
   }
 }
+
